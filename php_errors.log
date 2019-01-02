@@ -1,0 +1,35 @@
+[28-Dec-2018 09:21:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Illuminate\Foundation\Application::routeMiddleware() in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php:58
+Stack trace:
+#0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
+#1 {main}
+  thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58
+[28-Dec-2018 09:21:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Illuminate\Foundation\Application::routeMiddleware() in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php:58
+Stack trace:
+#0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
+#1 {main}
+  thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58
+[28-Dec-2018 09:21:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Illuminate\Foundation\Application::routeMiddleware() in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php:58
+Stack trace:
+#0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
+#1 {main}
+  thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58
+[28-Dec-2018 09:21:53 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Illuminate\Foundation\Application::routeMiddleware() in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php:58
+Stack trace:
+#0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
+#1 {main}
+  thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58
+[28-Dec-2018 09:21:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Illuminate\Foundation\Application::routeMiddleware() in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php:58
+Stack trace:
+#0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
+#1 {main}
+  thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58
+[28-Dec-2018 09:22:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Illuminate\Foundation\Application::routeMiddleware() in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php:58
+Stack trace:
+#0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
+#1 {main}
+  thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58
+[28-Dec-2018 09:22:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Illuminate\Foundation\Application::routeMiddleware() in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php:58
+Stack trace:
+#0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
+#1 {main}
+  thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58

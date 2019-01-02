@@ -14,7 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api',
+        // 'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -36,15 +37,18 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
+        // 'web' => [
+        'api' => [
+            // 'driver' => 'session',
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-        ],
+        // 'api' => [
+        //     'driver' => 'firebase'
+        //     // 'driver' => 'token',
+        //     // 'provider' => 'users',
+        // ],
     ],
 
     /*

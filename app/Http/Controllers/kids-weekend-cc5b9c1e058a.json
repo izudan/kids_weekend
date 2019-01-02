@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "kids-weekend",
+  "private_key_id": "cc5b9c1e058a7219691e03e10461f9c968311167",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC0hPpaTASL+J2t\ndsSxmE0uGqiJaC4WEPZwlUzPjbYpAd4AYxWbxvJdIPi6FftupPKjzUrvQCAvWw52\nfOEFh6kzZv5iaty/F4Lx8TDWYUMxabIJwU/IqmqAyOYphVgEo8BnLWDgkVBS3bXD\n0GzUUwjgpW3gs51wKpOu/2OeqiKF1aG2NPfV+8PYu0CpVc6cA00XmXjTMo1SUUTA\nTagC90DjhadabvdIdSQKhtYQ9WnZymLrHkFTNGtp7P6SMOAZo5yyO48T2qMES6lO\nSMvI3gOvlWnb+tK29/EsSa6NFXM95YPt/ASH6Jzr6kUSS8FsKEyQZuW7BXzl1P93\njjIg1oH3AgMBAAECggEABSkWBRXOPXgefdJ63f7WGf7OGZt+UcgrW12RRA+viO2S\nPJ2YhQsDa7EhGyS8utWBUDhyr3M8WE44lB+OyTsvFZaYqBSY+eeAqUz1UfOW2adF\nXS0HDFv+zm6v0bkLoppRykFMVy8gRjYrV40yR0GWa+GeygEoe4fkD+kiHmuLsBq2\ndcxtj02YWzUvbrTO/n/0yDQx5zVXC0bOMwdXLDEhsSu4WfpGHoyuyJVwM3FlWZCD\nYQjAyuavnn0F0xBwidKL8TNdJw7TjCl/0jqOcnO5HIohfKGoZXh/SfN0Ea0P10Wq\nsQrDhIqbWRz3N235V3Ce0qC1zHQ3RlI0aEmGah8klQKBgQDwl+3ynazloZVyde3N\ny6JWAzpDV/AhYaQXN3i2BIH+JROTqU0mTegjZepv0oqxzrcfEiRJb/ww2BvQDJS1\noRdCpFI9t6RkUXsbmGo7Av2vw1jA8Xu3udIcMPOSTketus9YDtfW4MvDs5qtiCo4\na1Zea2axvPCozMix6nydpY1PnQKBgQDAFD/dstr5KTRWuLyOvllGT3kWi44WUU2q\n/r+8+OHoUEFcW9mWYhWq//6bRwMakWnneH0ZwP5bnQCfTvw2L7TDB8n6d1adZLeM\n3AJpAj/Dl58+b3+UclVZH08AjrjLaQ4dSmlyrxbZ8QJGhljoHkWP9r4lfGfOw4M4\nGWjvdy3FowKBgGBr8y/tozIwbO1/d7unZbrk9j+xCYrHT/UCBT2lVtec0li2XDYC\nuQseuDLyhSU3fEpWgfZwi/ijU5owwJR+KA1MP61+YMLXqOfpUIGv9C2xs2s4HGYI\ncb1cnPFAsBdfK+PVpwj19JPM8iujy4/q7KVQk8qdtzFfSPuMxz6C77w9AoGAOara\nsdjs3Tl9uTulgMWtT+q0VAx6EEFArEHnlvix+ml99hitbvTrxHcvHbdoOyXFQfVu\nubizpRWyBiJUnoAcKSHBhi0mGAMRCH1VS+mc80AmUzxudUcOUL+RnH09BfT4g9q/\nZesjVTOCl2Hmd2n/QIW3+NEs6WrRjpoyYxLI7zkCgYBsEJtbjCdz0rtApiBBPlmg\nw+548vJ0pRAGtsMHYRKwQCsQrSBgT/HbVzPoZk0uRzyPTol2VaLJxcqD74UNs9JE\n9wdHTuaXCkPIVRp1WwJzx/gtFG5pKluUc6sBiPp5Sl1CF5ancPY4UIG6JXNuz0uw\npnGrwuhMFAREA1vse1yZZQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "kids-weekend@appspot.gserviceaccount.com",
+  "client_id": "102009857441530059546",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kids-weekend%40appspot.gserviceaccount.com"
+}
