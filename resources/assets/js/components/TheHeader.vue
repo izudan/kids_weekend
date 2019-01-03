@@ -128,6 +128,7 @@ export default {
       logout: 'user/logout',
     }),
     handleLogin(email, password) {
+      this.$router.push('/activity');
       this.login({email: email, password: password});
     },
     handleLogout() {

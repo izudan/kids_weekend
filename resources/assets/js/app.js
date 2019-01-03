@@ -9,12 +9,14 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import VueSlideoutPanel from 'vue2-slideout-panel';
+import VueCarousel from 'vue-carousel';
 import App from './App';
 import { sync } from 'vuex-router-sync';
 import store from './store/index';
 import router from './router/router';
 
 Vue.use(VueSlideoutPanel);
+Vue.use(VueCarousel);
 sync(store, router);
 
 Vue.config.productionTip = false;
