@@ -23,7 +23,7 @@
                     <div class="main-info">
                         <div class="main-content">
                             <div class="school-name">
-                                <span>shcool name</span>
+                                <span>shcool name {{ $route.params.id }}</span>
                             </div>
                             <div class="title-expand">
                                 <h1 class="title is-1">Activity Name</h1>
@@ -302,6 +302,11 @@ a:hover {
 .title-expand {
     padding-bottom: 20px;
 }
+
+.school-name {
+    color: #484848;
+}
+
 .location {
     display: flex;
 }
@@ -349,7 +354,7 @@ a:hover {
     justify-content: space-between;
     margin-top: 40px;
     padding-bottom: 40px;
-    border-bottom: 1px solid #EBEBEB;    
+    border-bottom: 1px solid #EBEBEB; 
 }
 .contact-host {
     font-size: 12px;
@@ -392,7 +397,6 @@ a:hover {
     margin: 0px auto 8px;
 }
 .schedule,
-.notes
 {
     padding-bottom: 40px;
     border-bottom: 1px solid #EBEBEB;
@@ -427,12 +431,14 @@ a:hover {
 .columns-notes {
     margin-top: 0px;
 }
-.about-notes {
-    
+.notes {
+    padding-bottom: 40px;
 }
 .column.is-half {
     width: 50%;
     height: auto;
+    /*padding: 24px 0 16px;*/
+    border-bottom: 1px solid #EBEBEB;
 }
 .notes-heading {
     font-weight: bold;

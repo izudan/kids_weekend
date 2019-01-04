@@ -25,6 +25,8 @@ export default {
 
 <style scoped>
 body {
+    font-family: Circular, "Helvetica Neue", Helvetica,Arial, 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    color: #484848;
     box-sizing:  border-box;
 }
 </style>

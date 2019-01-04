@@ -1,23 +1,14 @@
 <template>
-<div>
-    <h1 class="title has-text-centered">NavMenu</h1>
-    <div class="has-text-centered">
-        <a class="button is-primary" @click.prevent="closePanel">
-            Close Panel
-        </a>
-    </div>
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>登録する</strong>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <section class="section">
+        <h1 class="title" @click.prevent="closePanel">Kids Weekend</h1>
+        <ul class="">
+            <li class="backToHome">
+                <router-link to="/" @click.prevent="closePanel">
+                    ホームへ
+                </router-link>
+            </li>
+        </ul>
+    </section>
 </template>
 
 <script>
@@ -26,6 +17,9 @@ export default {
     data() {
         return {};
     },
+    props: {
+        name: String
+    },
     methods: {
         closePanel() {
             this.$emit("closePanel", {});
@@ -33,3 +27,13 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.section {
+    padding: 20px;
+}
+.backToHome {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #EBEBEB;
+}
+</style>

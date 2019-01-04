@@ -6,6 +6,7 @@ import Top from '../pages/TheTop';
 import TheActivity from '../pages/TheActivity';
 import IndivActivity from '../pages/TheIndivActivity';
 import Users from '../pages/Users';
+import SearchCategory from '../pages/ActivitySearchForCategory';
  
 Vue.use(VueRouter);
  
@@ -21,6 +22,14 @@ const routes = [
     {
         path:'/activity',
         component: TheActivity
+    },
+    {
+        path: '/search',
+        component: SearchCategory,
+        // // propsを渡して、カテゴリーを引っ張ってくるようにする
+        // props: route => ({
+        //     query: route.query.category
+        // })
     },
     {
         path:'/activity/:id',

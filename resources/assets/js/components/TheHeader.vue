@@ -1,21 +1,15 @@
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <router-link to="/" class="navbar-item">
-          <span class="title is-3">Kids Weekend</span>
-          <!--<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">-->
-          <!--<i class="fas fa-angle-down"></i>-->
-        </router-link>
-    
-        <a role="button" class="navbar-burger burger" :class="{ 'is-active': menuActive }" @click.prevent="showNavMenuPanel" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
+        <a role="button" aria-label="menu" aria-expanded="false" class="navbar-item brand" :class="{ 'is-active': mobileMenuActiveToggle }" @click.prevent="showNavMenuPanel">
+          <p class="brand">Kids Weekend</p>
+          <i class="fas fa-angle-down"></i>
         </a>
+        
         <slideout-panel></slideout-panel>
       </div>
     
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
             <div v-if="!isLoggedIn" class="buttons">
@@ -106,10 +100,12 @@ export default {
         maxWidth: 1280
       },
       navMenu: {
-        openOn: "right",
-        maxWidth: 1280
+        openOn: "left",
+        maxWidth: 275,
+        timeout: 1000
       },
-      menuActive: false,
+      normalMenuActive: false,
+      mobileMenuActive: false,
       dropdownActive: false,
       showRegisterModal: false,
       showLoginModal: false,
@@ -139,8 +135,7 @@ export default {
         component: "search",
         cssClass: "search",
         openOn: this.searchForm.openOn,
-        width: this.searchForm.maxWidth,
-        props: {}
+        width: this.searchForm.maxWidth
       });
     },
     showNavMenuPanel() {
@@ -149,11 +144,19 @@ export default {
         cssClass: "navMenu",
         openOn: this.navMenu.openOn,
         width: this.navMenu.maxWidth,
-        props: {}
+        props: {
+          name: this.navMenu.name
+        }
       });
+      setTimeout(() => {
+        panel.hide();
+      }, this.navMenu.timeout);
     },
-    menuToggle(){
-      this.menuActive = !this.menuActive;
+    normalMenuActiveToggle(){
+      this.normalMenuActive = !this.normalMenuActive;
+    },
+    mobileMenuActiveToggle(){
+      this.mobileMenuActive = !this.mobileMenuActive;
     },
     dropdownToggle(){
       this.dropdownActive = !this.dropdownActive;
@@ -172,6 +175,12 @@ export default {
 </script>
 
 <style scoped>
+.brand {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    padding-right: 8px;
+}
 .button.btn-register {
   background-color: #03cea4;
 }

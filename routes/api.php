@@ -31,8 +31,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => 'api'], function () {
+    Route::post('register', 'AuthController@register');
     Route::post('authenticate', 'AuthController@authenticate');
     Route::get('logout', 'AuthController@logout')->middleware('jwt.refresh');
+    
+    // to fetch activity all data. there are possibility to change function's name
+    // Route::get('fetchAllActivityData',  'ActivityController@fetchAllActivityData');
+    //// public function fetchAllActivityData()
+    //// {
+    ////     $activityData = Activity::all();
+    ////     return $activityData;
+    //// }
 
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::get('me',  'AuthController@getCurrentUser');

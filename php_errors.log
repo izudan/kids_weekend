@@ -33,3 +33,7 @@ Stack trace:
 #0 /home/ubuntu/workspace/kids_weekend/public/index.php(38): require_once()
 #1 {main}
   thrown in /home/ubuntu/workspace/kids_weekend/bootstrap/app.php on line 58
+[04-Jan-2019 07:31:04 UTC] PHP Fatal error:  Cannot use JWTAuth as JWTAuth because the name is already in use in /home/ubuntu/workspace/kids_weekend/app/Http/Controllers/AuthController.php on line 10
+[04-Jan-2019 07:31:05 UTC] PHP Fatal error:  Cannot use JWTAuth as JWTAuth because the name is already in use in /home/ubuntu/workspace/kids_weekend/app/Http/Controllers/AuthController.php on line 10
+[04-Jan-2019 07:55:48 UTC] PHP Fatal error:  Cannot use JWTAuth as JWTAuth because the name is already in use in /home/ubuntu/workspace/kids_weekend/app/Http/Controllers/AuthController.php on line 10
+[04-Jan-2019 07:56:15 UTC] PHP Fatal error:  Cannot use JWTAuth as JWTAuth because the name is already in use in /home/ubuntu/workspace/kids_weekend/app/Http/Controllers/AuthController.php on line 10
