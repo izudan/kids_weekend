@@ -1,11 +1,16 @@
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a role="button" aria-label="menu" aria-expanded="false" class="navbar-item brand" :class="{ 'is-active': mobileMenuActiveToggle }" @click.prevent="showNavMenuPanel">
-          <p class="brand">Kids Weekend</p>
-          <i class="fas fa-angle-down"></i>
+        <router-link to="/" role="button" aria-label="menu" aria-expanded="false" class="navbar-item brand">
+          <p class="title is-4">Kids Weekend</p>
+        </router-link>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" @click.prevent="showUserMenuPanel">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
-        
+
         <slideout-panel></slideout-panel>
       </div>
     
@@ -23,7 +28,7 @@
                 <strong class="has-text-white">ログイン</strong>
               </a>
             </div>
-            <div v-else class="buttons">
+            <div v-else class="buttons is-hidden-mobile">
               <div class="dropdown is-right" :class="{ 'is-active': dropdownActive }">
                   <div class="dropdown-trigger">
                       <button class="button btn-dropdown is-light" aria-haspopup="true" aria-controls="dropdown-menu" @click.prevent="dropdownToggle">
@@ -64,48 +69,49 @@
         </div>
         <template>
           <register-modal
-            v-if="showRegisterModal"
-            :showRegisterModal="showRegisterModal"
-            @close="registerModalToggle">
+              v-if="showRegisterModal"
+              :showRegisterModal="showRegisterModal"
+              @close="registerModalToggle">
           </register-modal>
-          
+            
           <login-modal
-            v-if="showLoginModal"
-            :showLoginModal="showLoginModal"
-            :action="handleLogin"
-            @close="loginModalToggle">
+              v-if="showLoginModal"
+              :showLoginModal="showLoginModal"
+              :action="handleLogin"
+              @close="loginModalToggle">
           </login-modal>
-          
+            
           <logout-modal
-            v-if="showLogoutModal"
-            :action="handleLogout"
-            :showLoginModal="showLogoutModal"
-            @close="logoutModalToggle">
+              v-if="showLogoutModal"
+              :action="handleLogout"
+              :showLogoutModal="showLogoutModal"
+              @close="logoutModalToggle">
           </logout-modal>
-          
-          <slideout-panel></slideout-panel>
         </template>
       </div>
     </nav>
 </template>
 
 <script>
+import RegisterModal from './RegisterModal';
+import LoginModal from './LoginModal';
+import LogoutModal from './LogoutModal';
+// import UserMenu from './SlideUserMenuPanel';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
+  components: {
+      RegisterModal,
+      LoginModal,
+      LogoutModal
+  },
   data() {
     return {
-      searchForm: {
+      userMenu: {
         openOn: "right",
-        maxWidth: 1280
+        maxWidth: 275
       },
-      navMenu: {
-        openOn: "left",
-        maxWidth: 275,
-        timeout: 1000
-      },
-      normalMenuActive: false,
-      mobileMenuActive: false,
+      userMenuActive: false,
       dropdownActive: false,
       showRegisterModal: false,
       showLoginModal: false,
@@ -130,33 +136,16 @@ export default {
     handleLogout() {
       this.logout();
     },
-    showSearchPanel() {
+    showUserMenuPanel() {
       const panel = this.$showPanel({
-        component: "search",
-        cssClass: "search",
-        openOn: this.searchForm.openOn,
-        width: this.searchForm.maxWidth
+        component: "UserMenu",
+        cssClass: "UserMenu",
+        openOn: this.userMenu.openOn,
+        width: this.userMenu.maxWidth
       });
     },
-    showNavMenuPanel() {
-      const panel = this.$showPanel({
-        component: "navMenu",
-        cssClass: "navMenu",
-        openOn: this.navMenu.openOn,
-        width: this.navMenu.maxWidth,
-        props: {
-          name: this.navMenu.name
-        }
-      });
-      setTimeout(() => {
-        panel.hide();
-      }, this.navMenu.timeout);
-    },
-    normalMenuActiveToggle(){
-      this.normalMenuActive = !this.normalMenuActive;
-    },
-    mobileMenuActiveToggle(){
-      this.mobileMenuActive = !this.mobileMenuActive;
+    userMenuActiveToggle(){
+      this.mobileMenuActive = !this.userMenuActive;
     },
     dropdownToggle(){
       this.dropdownActive = !this.dropdownActive;

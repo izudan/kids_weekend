@@ -11,10 +11,24 @@ class ActivityController extends Controller
     
     public function activity_index()
     {
-        $activities=Activity::orderBy('created_at','asc')->get();
-        return view('activityRegist', [
-            'activities'=>$activities
-        ]);
+        $activities = Event::select(
+            // [
+            //     'activity_id',
+            //     'category_id',
+            //     'file_name',
+            //     'school_name',
+            //     'activity_name',
+            //     'event_start_time',
+            //     'event_price',
+            //     'event_target_min_age',
+            //     'event_target_max_age'
+            // ]
+            )
+            ->join('schools','school_id','=','schools.id')
+            ->where('activity_pub_status', '0')
+            ->get();
+        
+        return $activities;
     }
     
     

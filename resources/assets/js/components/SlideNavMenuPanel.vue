@@ -1,5 +1,5 @@
 <template>
-    <section class="section">
+    <div class="section">
         <h1 class="title" @click.prevent="closePanel">Kids Weekend</h1>
         <ul class="">
             <li class="backToHome">
@@ -8,7 +8,7 @@
                 </router-link>
             </li>
         </ul>
-    </section>
+    </div>
 </template>
 
 <script>

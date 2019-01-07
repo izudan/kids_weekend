@@ -1,5 +1,5 @@
 import http from '../../services/http';
-import * as types from '../mutations-type';
+import types from '../mutation-types';
 
 const state = {
   user: {},

@@ -25,11 +25,12 @@ const routes = [
     },
     {
         path: '/search',
+        name: 'Search',
         component: SearchCategory,
-        // // propsを渡して、カテゴリーを引っ張ってくるようにする
-        // props: route => ({
-        //     query: route.query.category
-        // })
+        // propsを渡して、カテゴリーを引っ張ってくるようにする
+        props: route => ({
+            query: route.query.category
+        })
     },
     {
         path:'/activity/:id',

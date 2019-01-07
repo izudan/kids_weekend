@@ -1,8 +1,12 @@
 <template>
 <main>
-    <section class="section">
-        <div v-for="(categoryTitle, index) in category" :key="index" class="container container-expand">
-            <h1 class="title big-title is-block is-3">{{ categoryTitle }}</h1>
+    <div class="loading-container" v-if="isLoading">
+        <fade-loader class="loading"></fade-loader>
+    </div>
+
+    <section v-else class="section">
+        <div v-for="(categorydata) in category" :key="categorydata.category_id" class="container container-expand">
+            <h1 class="title big-title is-block is-3">{{ categorydata.category_name }}</h1>
             <div class="category-wrapper">
                 <div class="columns is-multiline is-centered">
                     <carousel
@@ -10,33 +14,39 @@
                         :perPageCustom="[[768, 2], [1024, 3.5]]"
                         style="width: 100%"
                         >
-                        <slide v-for="(index) in slideData" :key="index">
-                            <router-link :to="{ name: 'IndivActivity', params: { id: 100 }}" class="column is-quarter">
+                        <slide v-for="(data, index) in filterCategoryActivityData(categorydata.category_id)" :key="index">
+                            <router-link :to="{ name: 'IndivActivity', params: { id: data.activity_id }}" class="column is-quarter">
                                 <div class="image-container">
                                     <div class="image-box">
                                         <figure class="image">
-                                          <img src="https://bulma.io/images/placeholders/128x128.png">
+                                          <progressive-img v-if="categorydata.category_id === 1" src="/images/education/edu_kids_larning_class.jpeg"/>
+                                          <progressive-img v-if="categorydata.category_id === 2" src="/images/music/music_music_school.jpeg" />
+                                          <progressive-img v-if="categorydata.category_id === 3" src="/images/sports/sports_ballet_class1.jpeg" />
+                                          <progressive-img v-if="categorydata.category_id === 4" src="/images/art/art_ar_class.jpeg" />
+                                          <progressive-img v-if="categorydata.category_id === 5" src="/images/science/science_baby_programing_class.jpg" />
+                                          <progressive-img v-if="categorydata.category_id === 6" src="/images/language/language_english.jpeg" />
                                         </figure>
                                     </div>
                                 </div>
                                 <div class="content-container">
                                     <div class="content">
                                         <div class="school-title text-completion-mobile has-text-weight-semibold has-text-primary">
-                                            <span class="school-title-detail">月島イングリッシュスクール</span>
+                                            <span class="school-title-detail">{{ data.school_name }}</span>
                                         </div>
                                         <div class="activity-title text-completion-mobile has-text-weight-bold">
-                                            楽しく学ぶ英会話
+                                            {{ data.activity_name }}
                                         </div>
                                         <div class="activity-time text-completion">
                                             <span class="icon is-small"><i class="far fa-clock has-text-primary"></i></span>
-                                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                                            <time datetime="2016-1-1">{{ data.event_start_time }}</time>
                                         </div>                            
                                         <div class="short-description text-completion is-7">
                                             <span class="icon is-small"><i class="fas fa-child has-text-danger"></i></span>
-                                            <span>3才</span>
-                                            <span> | </span>
+                                            <span>{{ data.event_target_min_age }}</span>
+                                            <span> 〜 </span>
+                                            <span>{{ data.event_target_max_age }}才</span>
                                             <span class="icon is-small"><i class="fas fa-money-bill-alt has-text-warning"></i></span>
-                                            <span>3クレジット</span>
+                                            <span>{{ data.event_price }}円</span>
                                         </div>
                                         <div class="category text-completion">
                                             <span class="tag is-light">English</span>
@@ -57,91 +67,71 @@
                     </carousel>
                 </div>
             </div>
-            <router-link to="/search" class="is-block is-2 display-category">
-                <span>すべての{{ categoryTitle }}を表示する</span>
+            <router-link :to="{ path: 'search', query: { category: categorydata.category_id }}" class="is-block is-2 display-category">
+                <span>すべての{{ categorydata.category_name }}を表示する</span>
                 <span class="is-hidden-mobile"><i class="fa fa-angle-right"></i></span>
             </router-link>
         </div>
     </section>
-    <!--<section class="section">-->
-    <!--    <div class="container">-->
-    <!--        <div class="columns search">-->
-    <!--            <div class="column search-today">-->
-    <!--                <div class="search-card">-->
-    <!--                    <div class="search-card-part">-->
-    <!--                        <div class="search-card-left-part">-->
-    <!--                            <figure class="image">-->
-    <!--                                <img src="https://bulma.io/images/placeholders/128x128.png">-->
-    <!--                            </figure>-->
-    <!--                        </div>-->
-    <!--                        <div class="search-card-right-part">-->
-    <!--                            <p>明日</p>-->
-    <!--                        </div>                           -->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--            <div class="column search-tomorrow">-->
-    <!--                <div class="search-card">-->
-    <!--                    <div class="search-card-part">-->
-    <!--                        <div class="search-card-left-part">-->
-    <!--                            <figure class="image">-->
-    <!--                                <img src="https://bulma.io/images/placeholders/128x128.png">-->
-    <!--                            </figure>-->
-    <!--                        </div>-->
-    <!--                        <div class="search-card-right-part">-->
-    <!--                            <p>明日</p>-->
-    <!--                        </div>                           -->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--            <div class="column search-date">-->
-    <!--                <div class="search-card">-->
-    <!--                    <div class="search-card-part">-->
-    <!--                        <div class="search-card-left-part">-->
-    <!--                            <figure class="image">-->
-    <!--                                <img src="https://bulma.io/images/placeholders/128x128.png">-->
-    <!--                            </figure>-->
-    <!--                        </div>-->
-    <!--                        <div class="search-card-right-part">-->
-    <!--                            <p>明日</p>-->
-    <!--                        </div>                           -->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
 </main>
 </template>
 
 <script>
-import http from '../services/http';
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import FadeLoader from 'vue-spinner/src/FadeLoader.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     components: {
-        PulseLoader
+        FadeLoader
     },
     data() {
         return {
-            category: ["教育","体験"],
-            slideData: ["今日","明日","1/5","1/6","1/7","1/8","1/9"],
-            // activityData: [],
-            isLoading: true
+            category: [
+                {
+                    category_id: 1,
+                    category_name: "教育"
+                },
+                {
+                    category_id: 2,
+                    category_name: '音楽'
+                },
+                {
+                    category_id: 3,
+                    category_name: "スポーツ"
+                },
+                {
+                    category_id: 4,
+                    category_name: "アート"
+                },
+                {
+                    category_id: 5,
+                    category_name: "サイエンス"
+                },
+                {
+                    category_id: 6,
+                    category_name: "コミュニケーション"
+                }
+            ],
+            isImgLoading: false
         }
     },
     methods: {
-        // fetchAllActivityData() {
-        //     http.get('fetchAllActivityData').then(res => {
-        //         this.activityData = res.data;
-        //     });
-        // },
-        loaded () {
-            this.isLoading = !this.isLoading;
+        ...mapActions({
+            fetchEventData: 'activity/fetchAllData'
+        }),
+        loading() {
+            this.isImgLoading != this.isImgLoading;
         }
     },
+    computed: {
+        ...mapGetters({
+            activityData: 'activity/activityData',
+            isLoading: 'activity/isLoading',
+            filterCategoryActivityData: 'activity/filterCategoryActivityData',
+      })
+    },
     created() {
-        // this.fetchAllActivityData();
+        this.fetchEventData();
     }
 }
 </script>
@@ -150,13 +140,11 @@ export default {
 body {
     font-family: Circular, "Helvetica Neue", Helvetica,Arial, 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
 }
-@media screen and (min-width:480px) {
-    .text-completion-mobile {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        color: black;
-    }
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 .section {
     padding: 20px 20px 40px;
@@ -260,7 +248,14 @@ a:hover {
 }
 .search-card-right-part {
 }
-
+@media screen and (min-width:480px) {
+    .text-completion-mobile {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: black;
+    }
+}
 @media screen and (max-width: 768px) {
     .display-category {
         width: 100%;

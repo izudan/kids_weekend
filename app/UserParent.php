@@ -14,11 +14,13 @@ class UserParent extends Model
     ];
     
     // $userParent->family
-    public function family() {
+    public function family()
+    {
         return $this->belongsTo('App\Family');
     }
     
-    public function books() {
+    public function books()
+    {
         return $this->hasMany('App\Book');
     }
     

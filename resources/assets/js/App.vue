@@ -7,10 +7,18 @@
     </div>
 </template>
 <script>
+import TheHeader from './components/TheHeader.vue';
+import TheFooter from './components/TheFooter.vue';
+import RadiusMenu from './components/RadiusMenu.vue';
 import { mapActions } from 'vuex';
 import http from './services/http';
 
 export default {
+    components: {
+        TheHeader,
+        TheFooter,
+        RadiusMenu
+    },
     methods: {
         ...mapActions({
             init: 'user/setCurrentUser'
@@ -25,8 +33,13 @@ export default {
 
 <style scoped>
 body {
-    font-family: Circular, "Helvetica Neue", Helvetica,Arial, 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
+    font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
     color: #484848;
     box-sizing:  border-box;
+    overflow: auto;
+    height: 100%;
+}
+body.open {
+    overflow: hidden;
 }
 </style>

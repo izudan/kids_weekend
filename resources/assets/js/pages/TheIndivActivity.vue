@@ -1,6 +1,10 @@
 <template>
 <main>
-    <div class="section">
+    <div v-if="isLoading" class="loading-container">
+        <fade-loader class="loading"></fade-loader>
+    </div>
+
+    <div v-else class="section">
         <div class="container container-expand">
             <div class="columns">
                 <div class="column is-one-quarter">
@@ -12,8 +16,8 @@
                             :perPage="1"
                             >
                             <slide v-for="(index) in slideData" :key="index">
-                                <figure class="image image is-4by5">
-                                    <img src="https://bulma.io/images/placeholders/256x256.png">
+                                <figure class="image image-top">
+                                    <progressive-img src="/images/art/art_ar_class.jpeg" placeholder="https://unsplash.it/1920/1080?random" />
                                 </figure>
                             </slide>
                         </carousel>
@@ -23,10 +27,10 @@
                     <div class="main-info">
                         <div class="main-content">
                             <div class="school-name">
-                                <span>shcool name {{ $route.params.id }}</span>
+                                <span>{{ individualActivityData.school_name }}</span>
                             </div>
                             <div class="title-expand">
-                                <h1 class="title is-1">Activity Name</h1>
+                                <h1 class="title is-1">{{ individualActivityData.activity_name }}</h1>
                             </div>
                             <div class="icon-group">
                                 <div class="location">
@@ -34,7 +38,10 @@
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
                                     <div>
-                                        <p class="">Tokyo</p>
+                                        <p class="">
+                                            <span>{{ individualActivityData.school_state }}</span>
+                                            <span>{{ individualActivityData.school_city }}</span>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="time">
@@ -42,7 +49,7 @@
                                         <i class="far fa-clock"></i>
                                     </div>
                                     <div>
-                                        <p class=""><time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time></p>
+                                        <p class=""><time datetime="2016-1-1">{{ individualActivityData.event_start_time }}</time></p>
                                     </div>
                                 </div>
                                 <div class="to-bring">
@@ -58,7 +65,11 @@
                                         <i class="fas fa-child"></i>
                                     </div>
                                     <div>
-                                        <p class="">3才</p>
+                                        <p class="">
+                                            <span>{{ individualActivityData.event_target_min_age }}</span>
+                                            <span> 〜 </span>
+                                            <span>{{ individualActivityData.event_target_max_age }}才</span>
+                                        </p>
                                     </div>
                                 </div>                                
                             </div>
@@ -75,18 +86,18 @@
                                     <div class="about-shcool">
                                         <p class="shcool-heading is-3">スクールについて</p>
                                         <p>
-                                            Florida, the "Land of Flowers," the enchanted ground wherein it has been said Ponce de Leon sought for the "fountain of perpetual youth," is not far away; the fountain, quite likely, is as remote as ever, but the land which it was said to bless with its ever flowing and rejuvenating waters, can be reached after a journey of a few days from New York, by steamship if the traveler is not unpleasantly affected by a sea-voyage, or, if the apprehension of "rough weather off Hatteras" should make a different route preferable, then by rail to Charleston, thence by steamer over waters generally smooth to Fernandina, stopping on the way at Savannah just long enough to look about and obtain a general idea of the place.
+                                            {{ individualActivityData.school_detail }}
                                         </p>
                                     </div>
                                 </div>
                                 <div class="host-part-right">
                                     <div class="image-box image-box-expand">
                                         <figure class="image image-size school-image">
-                                          <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                            <progressive-img class="is-rounded" src="/images/dreaming_boy.jpg" placeholder="https://unsplash.it/1920/1080?random" />
                                         </figure>
                                     </div>
                                     <div class="host-info">
-                                        <p class="host-name">Miura</p>
+                                        <p class="host-name">{{ individualActivityData.school_name }}</p>
                                         <a class="contact-host">スクールに連絡する</a>                                        
                                     </div>
                                 </div>
@@ -96,7 +107,7 @@
                                     <div class="about-experience">
                                         <p class="experience-heading is-3">体験できること</p>
                                         <p>
-                                            Florida, the "Land of Flowers," the enchanted ground wherein it has been said Ponce de Leon sought for the "fountain of perpetual youth," is not far away; the fountain, quite likely, is as remote as ever, but the land which it was said to bless with its ever flowing and rejuvenating waters, can be reached after a journey of a few days from New York, by steamship if the traveler is not unpleasantly affected by a sea-voyage, or, if the apprehension of "rough weather off Hatteras" should make a different route preferable, then by rail to Charleston, thence by steamer over waters generally smooth to Fernandina, stopping on the way at Savannah just long enough to look about and obtain a general idea of the place.
+                                            {{ individualActivityData.activity_detail }}
                                         </p>
                                     </div>
                                 </div>
@@ -137,7 +148,7 @@
                             <div class="schedule">
                                 <div class="schedule-part">
                                     <div class="about-schedule">
-                                        <div style="padding: 0px 16px">
+                                        <div style="padding: 0px 32px">
                                             <div class="schedule-part-container">
                                                 <div class="schedule-card" style="padding: 24px 0px">
                                                     <div class="datetime">
@@ -146,7 +157,7 @@
                                                         <span>10:00 − 12:00</span>
                                                     </div>
                                                     <div class="schedule-card-price">
-                                                        <span>¥2,500/人</span>
+                                                        <span>¥{{ individualActivityData.event_price }}/人</span>
                                                         <span>.残席あと1名</span>
                                                     </div>
                                                 </div>
@@ -202,7 +213,7 @@
             </div>
         </div>        
     </div>
-    
+
     <!--ここはコンポーネント化する-->
     <div class="sticky-footer">
         <div class="container sticky-footer-container">
@@ -211,7 +222,7 @@
                     <div class="left-item is-hidden-mobile">
                         <div class="image-box">
                             <figure class="image image-size">
-                              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                <progressive-img class="is-rounded" src="/images/dreaming_boy.jpg" placeholder="https://unsplash.it/1920/1080?random" />
                             </figure>
                         </div>
                         <div class="content">
@@ -234,14 +245,14 @@
                     <div class="right-item">
                         <div class="price-part">
                             <div class="price-container">
-                                <span class="activity-price has-text-weight-bold">¥2,500</span>
+                                <span class="activity-price has-text-weight-bold">¥{{ individualActivityData.event_price }}</span>
                                 <span> / 1人</span>
                             </div>
                         </div>
                         <div class="schdule-part">
                             <div>
-                                <a class="button btn-expand">
-                                    <span class="has-text-weight-bold">開催日程</span>
+                                <a class="button btn-expand" @click.prevent="bookModalToggle">
+                                    <span class="has-text-weight-bold">今すぐ予約する</span>
                                 </a>
                             </div>
                         </div>
@@ -250,24 +261,73 @@
             </div>
         </div>
     </div>
+    
+    <book-modal
+        v-if="showBookModal"
+        :action="handleBook"
+        :showBookModal="showBookModal"
+        :activity_name="individualActivityData.activity_name"
+        :event_start_time="individualActivityData.event_start_time"
+        :event_price="individualActivityData.event_price"
+        @close="bookModalToggle">
+    </book-modal>
 </main>
 </template>
 
 <script>
+import BookModal from '../components/BookModal.vue';
+import FadeLoader from 'vue-spinner/src/FadeLoader.vue';
+import { mapState, mapActions, mapGetters } from 'vuex';
+
 export default {
+    components: {
+        FadeLoader,
+        BookModal
+    },
     data() {
         return {
-            slideData: ["label1","label2","label3","label4","label5","label6"]
+            slideData: ["label1","label2","label3"],
+            showBookModal: false,
         }
+    },
+    methods: {
+        ...mapActions({
+            fetchEventData: 'activity/fetchAllData'
+        }),
+        bookModalToggle(){
+          this.showBookModal = !this.showBookModal;
+        },
+        handleBook() {
+          this.book();
+        },
+    },
+    computed: {
+      ...mapGetters({
+            activityData: 'activity/activityData',
+            isLoading: 'activity/isLoading',
+            individualActivityData: 'activity/fetchIndividualActivityData',
+        })
+    },
+    created() {
+        this.fetchEventData();
     }
 }
 </script>
 
 <style scoped>
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 .columns {
     margin-top: 24px;
 }
-
+.image-top {
+    /*width: 100%;*/
+    /*height: auto;*/
+}
 .container-expand {
 }
 .side-menu {
@@ -302,9 +362,11 @@ a:hover {
 .title-expand {
     padding-bottom: 20px;
 }
-
 .school-name {
     color: #484848;
+}
+.school-image {
+    z-index: -2;
 }
 
 .location {
@@ -396,7 +458,7 @@ a:hover {
 .school-image {
     margin: 0px auto 8px;
 }
-.schedule,
+.schedule
 {
     padding-bottom: 40px;
     border-bottom: 1px solid #EBEBEB;
@@ -437,16 +499,13 @@ a:hover {
 .column.is-half {
     width: 50%;
     height: auto;
-    /*padding: 24px 0 16px;*/
+    padding-bottom: 24px;
     border-bottom: 1px solid #EBEBEB;
 }
 .notes-heading {
     font-weight: bold;
     padding-bottom: 4px;
 }
-
-
-
 
 .sticky-footer {
     height: 70px;
@@ -555,4 +614,5 @@ a:hover {
         margin: 0px auto;
     }
 }
+
 </style>

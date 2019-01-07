@@ -10,12 +10,14 @@ use Auth;
 class SchoolController extends Controller
 {
 
+    // select * from schools inner join activities on school_id = schools.id;
     public function school_index()
     {
-        $schools=School::orderBy('created_at','asc')->get();
-        return view('schoolRegist', [
-            'schools'=>$schools
-        ]);
+        $schools = School::select()//['activity_pub_status', 'file_name', 'school_name', 'activity_name',  ]
+            ->join('activities','school_id','=','schools.id')
+            ->get();
+        
+        return $schools;
     }
     
     public function school_store(Request $request)

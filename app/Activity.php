@@ -20,7 +20,6 @@ class Activity extends Model
     }
     
     
-    
     public function books()
     {
         return $this->hasmany('\App\Book', 'activity_id', 'activity_id');

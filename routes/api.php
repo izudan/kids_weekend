@@ -17,6 +17,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['middleware' => 'api'], function () {
+    Route::post('register', 'AuthController@register');
+    Route::post('authenticate', 'AuthController@authenticate');
+    Route::get('logout', 'AuthController@logout')->middleware('jwt.refresh');
+
+    Route::group(['middleware' => 'jwt.auth'], function () {
+        Route::get('me',  'AuthController@getCurrentUser');
+    });
+});
+
+Route::group(['middleware' => 'api'], function () {
+    Route::get('getevent',  'EventController@index');
+    Route::get('getactivity',  'EventController@getEvent');
+    Route::get('getschool',  'SchoolController@school_index');
+    // Route::get('category',  'CategoryController@getCategory');
+});
+
+
+
+/*
+ * For Firebase Connection
+ */
 // Route::group(['middleware' => 'api'], function() {
 //   Route::get('firebase', 'FirebaseController@setUser2');
 // });
@@ -28,22 +50,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // });
 
 // Route::post('/login', 'AuthController@login');
-
-
-Route::group(['middleware' => 'api'], function () {
-    Route::post('register', 'AuthController@register');
-    Route::post('authenticate', 'AuthController@authenticate');
-    Route::get('logout', 'AuthController@logout')->middleware('jwt.refresh');
-    
-    // to fetch activity all data. there are possibility to change function's name
-    // Route::get('fetchAllActivityData',  'ActivityController@fetchAllActivityData');
-    //// public function fetchAllActivityData()
-    //// {
-    ////     $activityData = Activity::all();
-    ////     return $activityData;
-    //// }
-
-    Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::get('me',  'AuthController@getCurrentUser');
-    });
-});
