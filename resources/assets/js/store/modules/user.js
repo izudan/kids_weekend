@@ -7,10 +7,15 @@ const state = {
 }
 
 const actions = {
+  register({ commit }, payload) {
+    http.post('register', payload, res => {
+      commit(types.AUTH_REGISTER, res.data);
+    }, null);
+  },
   login({ commit }, payload) {
-      http.post('authenticate', payload, res => {
-        commit(types.AUTH_LOGIN, res.data);
-      }, null);
+    http.post('authenticate', payload, res => {
+      commit(types.AUTH_LOGIN, res.data);
+    }, null);
   },
   logout({ commit }) {
     http.get('logout', () => {
@@ -25,6 +30,10 @@ const actions = {
 };
 
 const mutations = {
+  [types.AUTH_REGISTER](state, payload) {
+      this.state.user = payload.user;
+      this.state.authenticated = true;
+  },
   [types.AUTH_LOGIN](state, payload) {
       this.state.user = payload.user;
       this.state.authenticated = true;

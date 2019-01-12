@@ -98,7 +98,9 @@
                                     </div>
                                     <div class="host-info">
                                         <p class="host-name">{{ individualActivityData.school_name }}</p>
-                                        <a class="contact-host">スクールに連絡する</a>                                        
+                                        <a class="contact-host" @click.prevent="contactModalToggle">
+                                            スクールに連絡する
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -262,6 +264,13 @@
         </div>
     </div>
     
+    <contact-modal
+        v-if="showContactModal"
+        :action="handleContact"
+        :showContactModal="showContactModal"
+        @close="contactModalToggle">
+    </contact-modal>
+    
     <book-modal
         v-if="showBookModal"
         :action="handleBook"
@@ -276,18 +285,21 @@
 
 <script>
 import BookModal from '../components/BookModal.vue';
+import ContactModal from '../components/ContactModal.vue';
 import FadeLoader from 'vue-spinner/src/FadeLoader.vue';
 import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
     components: {
         FadeLoader,
-        BookModal
+        BookModal,
+        ContactModal
     },
     data() {
         return {
             slideData: ["label1","label2","label3"],
             showBookModal: false,
+            showContactModal: false
         }
     },
     methods: {
@@ -297,8 +309,14 @@ export default {
         bookModalToggle(){
           this.showBookModal = !this.showBookModal;
         },
+        contactModalToggle(){
+          this.showContactModal = !this.showContactModal;
+        },
         handleBook() {
           this.book();
+        },
+        handleContact() {
+          this.contact();
         },
     },
     computed: {

@@ -1,4 +1,5 @@
 export default {
+    AUTH_REGISTER: 'AUTH_REGISTER',
     AUTH_LOGIN: 'AUTH_LOGIN',
     AUTH_LOGOUT:'AUTH_LOGOUT',
     SET_USER: 'SET_USER',

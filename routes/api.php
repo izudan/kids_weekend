@@ -25,13 +25,13 @@ Route::group(['middleware' => 'api'], function () {
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::get('me',  'AuthController@getCurrentUser');
     });
+
 });
 
 Route::group(['middleware' => 'api'], function () {
     Route::get('getevent',  'EventController@index');
     Route::get('getactivity',  'EventController@getEvent');
     Route::get('getschool',  'SchoolController@school_index');
-    // Route::get('category',  'CategoryController@getCategory');
 });
 
 

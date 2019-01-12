@@ -18,6 +18,9 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div v-if="!isLoggedIn" class="buttons">
+              <a class="button btn-expand" @click.prevent="registerUsers">
+                テスト登録
+              </a>              
               <a class="button btn-expand" @click.prevent="showSearchPanel">
                 <i class="fas fa-search"></i>
               </a>
@@ -70,6 +73,7 @@
         <template>
           <register-modal
               v-if="showRegisterModal"
+              :action="handleRegister"
               :showRegisterModal="showRegisterModal"
               @close="registerModalToggle">
           </register-modal>
@@ -87,6 +91,11 @@
               :showLogoutModal="showLogoutModal"
               @close="logoutModalToggle">
           </logout-modal>
+          
+          <drop-down
+            v-if="showDropDown"
+            :action="handle"
+          ></drop-down>
         </template>
       </div>
     </nav>
@@ -96,6 +105,7 @@
 import RegisterModal from './RegisterModal';
 import LoginModal from './LoginModal';
 import LogoutModal from './LogoutModal';
+import DropDown from './DropDown';
 // import UserMenu from './SlideUserMenuPanel';
 import { mapActions, mapGetters } from 'vuex';
 
@@ -103,7 +113,8 @@ export default {
   components: {
       RegisterModal,
       LoginModal,
-      LogoutModal
+      LogoutModal,
+      DropDown
   },
   data() {
     return {
@@ -115,7 +126,9 @@ export default {
       dropdownActive: false,
       showRegisterModal: false,
       showLoginModal: false,
-      showLogoutModal: false
+      showLogoutModal: false,
+      showDropDown: false,
+      users: {}
     };
   },
   computed: {
@@ -126,9 +139,13 @@ export default {
   },
   methods: {
     ...mapActions({
+      register: 'user/register',
       login: 'user/login',
       logout: 'user/logout',
     }),
+    handleRegister(email, password) {
+      this.register({email: email, password: password});
+    },
     handleLogin(email, password) {
       this.$router.push('/activity');
       this.login({email: email, password: password});
@@ -158,6 +175,9 @@ export default {
     },
     logoutModalToggle(){
       this.showLogoutModal = !this.showLogoutModal;
+    },
+    dropDownToggle(){
+      this.showDropDown = !this.showDropDown;
     }
   }
 }

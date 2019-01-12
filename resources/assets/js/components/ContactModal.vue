@@ -1,5 +1,5 @@
 <template>
-  <transition name="modal"  :class="{ 'is-active': showBookModal }">
+  <transition name="modal"  :class="{ 'is-active': showContactModal }">
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
@@ -14,31 +14,10 @@
             <slot name="body">
                 <form>
                     <div class="field">
-                        <label class="label">アクティビティ</label>
-                        <div class="control">
-                            <p>{{ activity_name }}</p>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">日時</label>
-                        <div class="control">
-                            <p>{{ event_start_time }}</p>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">料金</label>
-                        <div class="control">
-                            <p><span>¥</span>{{ event_price }}</p>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">参加されるお子さん</label>
-                        <div class="control">
-                            <input type="checkbox" name="children" value="りえちゃん" id="checkbox01">
-                            <label for="checkbox01" class="checkbox">りえちゃん</label>
-                            <input type="checkbox" name="childrebn" value="ながせちゃん" id="checkbox02">
-                            <label for="checkbox02" class="checkbox">ながせちゃん</label>
-                        </div>
+                      <label class="label">スクールに連絡する</label>
+                      <div class="control">
+                        <textarea class="textarea" placeholder="ラインで返信が来ます"></textarea>
+                      </div>
                     </div>
                 </form>
             </slot>
@@ -46,8 +25,8 @@
 
           <div class="modal-footer">
             <slot name="footer">
-              <button class="button is-block is-info is-fullwidth" @click="book">
-                予約する
+              <button class="button btn-line is-block is-fullwidth" @click="contact">
+                送信
               </button>
             </slot>
           </div>
@@ -66,17 +45,14 @@ export default {
     }
   },
   props: {
-    showBookModal: Boolean,
-    activity_name: String,
-    event_start_time: String,
-    event_price: String,
+    showContactModal: Boolean,
     action: {
       type: Function,
       required: true
     }
   },
   methods: {
-    book() {
+    contact() {
       this.action()
     }
   }

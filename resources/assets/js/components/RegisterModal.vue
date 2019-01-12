@@ -13,46 +13,45 @@
           <div class="modal-body">
             <slot name="body">
                 <form>
-                    <div class="field">
-                        <div class="control">
-                            <a class="button is-medium is-fullwidth btn-line">LINEで登録</a>
-                        </div>
-                    </div>
-                    <div class="orField has-text-centered">
-                        <p>------- または -------</p>
-                    </div>
+                    <!--<div class="field">-->
+                    <!--    <div class="control">-->
+                    <!--        <a class="button is-medium is-fullwidth btn-line">LINEでログイン</a>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <!--<div class="orField has-text-centered">-->
+                    <!--    <p>------- または -------</p>-->
+                    <!--</div>-->
+                    <p class="register-title">メールアドレスで登録</p>
                     <div class="field">
                       <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="email" placeholder="メールアドレス" value="" autofocus>
+                        <input
+                          class="input"
+                          type="email"
+                          placeholder="メールアドレス"
+                          v-model="email"
+                          @keyup.enter="register"
+                          required
+                          autofocus>
+                          
                         <span class="icon is-small is-left">
                           <i class="fas fa-envelope"></i>
                         </span>
                       </div>
                     </div>
                     <div class="field">
-                      <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="田中" value="" >
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-user"></i>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="field">
-                      <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="又暉" value="" autofocus>
-                        <span class="icon is-small is-left">
-                          <i class="fas fa-user"></i>
-                        </span>
-                      </div>
-                    </div>
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          type="password"
+                          placeholder="パスワード"
+                          v-model="password"
+                          @keyup.enter="register"
+                          required>
 
-                    <div class="field">
-                      <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="パスワード">
                         <span class="icon is-small is-left">
                           <i class="fas fa-lock"></i>
                         </span>
-                      </p>
+                      </div>
                     </div>
                 </form>
             </slot>
@@ -60,7 +59,7 @@
 
           <div class="modal-footer">
             <slot name="footer">
-              <button class="button is-block is-info is-fullwidth">
+              <button class="button is-block is-info is-fullwidth"  @click="register">
                 登録する
               </button>
             </slot>
@@ -73,9 +72,24 @@
 
 <script>
 export default {
-    props: {
-        showRegisterModal: Boolean
+  data() {
+    return {
+      email: '',
+      password: '',
     }
+  },
+  props: {
+    showRegisterModal: Boolean,
+    action: {
+      type: Function,
+      required: true
+    }
+  },
+  methods: {
+    register() {
+      this.action(this.email, this.password)
+    }
+  }
 }
 </script>
 
@@ -88,6 +102,12 @@ export default {
 .orField {
     padding-top: 10px;
     padding-bottom: 15px;
+}
+.register-title {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  font-size: 18px;
 }
 .modal-mask {
   position: fixed;

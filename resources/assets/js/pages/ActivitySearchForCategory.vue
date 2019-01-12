@@ -140,7 +140,7 @@ a:hover {
 @media screen and (max-width: 768px) {
     .column.is-one-quarter {
         /*max-width: 100px;*/
-        min-width: 175px;
+        /*min-width: 175px;*/
     }
 }
 @media screen and (min-width:480px) {

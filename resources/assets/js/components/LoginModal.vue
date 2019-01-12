@@ -13,14 +13,15 @@
           <div class="modal-body">
             <slot name="body">
                 <form>
-                    <div class="field">
-                        <div class="control">
-                            <a class="button is-medium is-fullwidth btn-line">LINEでログイン</a>
-                        </div>
-                    </div>
-                    <div class="orField has-text-centered">
-                        <p>------- または -------</p>
-                    </div>
+                    <!--<div class="field">-->
+                    <!--    <div class="control">-->
+                    <!--        <a class="button is-medium is-fullwidth btn-line">LINEでログイン</a>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <!--<div class="orField has-text-centered">-->
+                    <!--    <p>------- または -------</p>-->
+                    <!--</div>-->
+                    <p class="login-title">ログイン</p>
                     <div class="field">
                       <div class="control has-icons-left has-icons-right">
                         <input
@@ -103,6 +104,12 @@ export default {
 .orField {
     padding-top: 10px;
     padding-bottom: 15px;
+}
+.login-title {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  font-size: 18px;
 }
 .modal-mask {
   position: fixed;

@@ -34,7 +34,6 @@ class EventController extends Controller
                 'school_city',
                 'school_detail',
                 'activity_detail',
-                
             ]
             )
             ->join('activities','activity_id','=','activities.id')
@@ -48,7 +47,7 @@ class EventController extends Controller
     public function getEvent()
     {
         $events = Event::all();
-        return $events;
+        return $events->activity->school;
     }
 
     public function getActivity()
