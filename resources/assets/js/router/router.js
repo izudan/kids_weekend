@@ -6,6 +6,8 @@ import Top from '../pages/TheTop';
 import TheActivity from '../pages/TheActivity';
 import IndivActivity from '../pages/TheIndivActivity';
 import Users from '../pages/Users';
+import EditUsers from '../pages/EditUsers';
+import ConfirmReserve from '../pages/ConfirmReserve';
 import SearchCategory from '../pages/ActivitySearchForCategory';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
@@ -20,6 +22,20 @@ const routes = [
     {
         path:'/users',
         component: Users
+        // meta: {
+        //     requiresAuth: true
+        // }
+    },
+    {
+        path:'/users/edit',
+        component: EditUsers
+        // meta: {
+        //     requiresAuth: true
+        // }
+    },
+    {
+        path:'/reserve',
+        component: ConfirmReserve
         // meta: {
         //     requiresAuth: true
         // }

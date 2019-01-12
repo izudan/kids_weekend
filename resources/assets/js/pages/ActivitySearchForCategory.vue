@@ -4,7 +4,7 @@
             <h1 class="title big-title is-block is-3">category</h1>
             <div class="category-wrapper">
                 <div class="columns is-mobile is-multiline is-centered">
-                    <router-link v-for="(data, index) in filterCategoryActivityData($route.query.category)" :key="data.activity_id" :to="{ name: 'IndivActivity', params: { id: data.activity_id }}" class="column is-quarter">
+                    <router-link v-for="(data, index) in filterCategoryActivityData($route.query.category)" :key="data.activity_id" :to="{ name: 'IndivActivity', params: { id: data.activity_id }}" class="column is-quarter is-half-mobile">
                         <div class="image-container">
                             <div class="image-box">
                                 <figure class="image">
@@ -137,12 +137,6 @@ a:hover {
     opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
-    .column.is-one-quarter {
-        /*max-width: 100px;*/
-        /*min-width: 175px;*/
-    }
-}
 @media screen and (min-width:480px) {
     .text-completion-mobile {
         text-overflow: ellipsis;

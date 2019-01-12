@@ -21,12 +21,6 @@
               <router-link to="/register" class="button btn-expand btn-register">
                 <strong class="has-text-white">登録する</strong>
               </router-link>
-              <!--<a class="button btn-expand btn-register" @click.prevent="registerModalToggle">-->
-              <!--  <strong class="has-text-white">登録する</strong>-->
-              <!--</a>-->
-              <!--<a class="button btn-expand btn-login" @click.prevent="loginModalToggle">-->
-              <!--  <strong class="has-text-white">ログイン</strong>-->
-              <!--</a>-->
               <router-link to="/login" class="button btn-expand btn-login">
                 <strong class="has-text-white">ログイン</strong>
               </router-link>
@@ -71,19 +65,6 @@
           </div>
         </div>
         <template>
-          <!--<register-modal-->
-          <!--    v-if="showRegisterModal"-->
-          <!--    :action="handleRegister"-->
-          <!--    :showRegisterModal="showRegisterModal"-->
-          <!--    @close="registerModalToggle">-->
-          <!--</register-modal>-->
-            
-          <!--<login-modal-->
-          <!--    v-if="showLoginModal"-->
-          <!--    :showLoginModal="showLoginModal"-->
-          <!--    :action="handleLogin"-->
-          <!--    @close="loginModalToggle">-->
-          <!--</login-modal>-->
             
           <logout-modal
               v-if="showLogoutModal"
@@ -102,17 +83,12 @@
 </template>
 
 <script>
-import RegisterModal from './RegisterModal';
-import LoginModal from './LoginModal';
 import LogoutModal from './LogoutModal';
 import DropDown from './DropDown';
-// import UserMenu from './SlideUserMenuPanel';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
-      RegisterModal,
-      LoginModal,
       LogoutModal,
       DropDown
   },
@@ -124,8 +100,6 @@ export default {
       },
       userMenuActive: false,
       dropdownActive: false,
-      showRegisterModal: false,
-      showLoginModal: false,
       showLogoutModal: false,
       showDropDown: false
     };
@@ -138,19 +112,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      register: 'user/register',
-      login: 'user/login',
       logout: 'user/logout',
     }),
-    async handleRegister(email, password) {
-      await this.registerModalToggle();
-      this.register({email: email, password: password});
-    },
-    async handleLogin(email, password) {
-      await this.loginModalToggle();
-      await this.login({email: email, password: password});
-      this.$router.push('/activity');
-    },
     async handleLogout() {
       await this.logoutModalToggle();
       this.logout();
@@ -165,23 +128,12 @@ export default {
         props: {
         }
       });
-      
-      panel.promise.then(result => {
-        this.$router.push('/login');
-        console.log(result)
-      });
     },
     userMenuActiveToggle(){
       this.mobileMenuActive = !this.userMenuActive;
     },
     dropdownToggle(){
       this.dropdownActive = !this.dropdownActive;
-    },
-    registerModalToggle(){
-      this.showRegisterModal = !this.showRegisterModal;
-    },
-    loginModalToggle(){
-      this.showLoginModal = !this.showLoginModal;
     },
     logoutModalToggle(){
       this.showLogoutModal = !this.showLogoutModal;

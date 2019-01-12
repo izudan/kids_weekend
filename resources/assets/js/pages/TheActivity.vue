@@ -137,9 +137,6 @@ export default {
 </script>
 
 <style scoped>
-body {
-    font-family: Circular, "Helvetica Neue", Helvetica,Arial, 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3', sans-serif;
-}
 .loading-container {
     display: flex;
     justify-content: center;

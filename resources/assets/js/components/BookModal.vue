@@ -69,7 +69,7 @@ export default {
     showBookModal: Boolean,
     activity_name: String,
     event_start_time: String,
-    event_price: String,
+    event_price: Number,
     action: {
       type: Function,
       required: true
