@@ -13,14 +13,6 @@
           <div class="modal-body">
             <slot name="body">
                 <form>
-                    <!--<div class="field">-->
-                    <!--    <div class="control">-->
-                    <!--        <a class="button is-medium is-fullwidth btn-line">LINEでログイン</a>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="orField has-text-centered">-->
-                    <!--    <p>------- または -------</p>-->
-                    <!--</div>-->
                     <p class="login-title">ログイン</p>
                     <div class="field">
                       <div class="control has-icons-left has-icons-right">
@@ -71,8 +63,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-
 export default {
   data() {
     return {
@@ -89,7 +79,7 @@ export default {
   },
   methods: {
     login() {
-      this.action(this.email, this.password)
+      this.action(this.email, this.password);
     }
   }
 }

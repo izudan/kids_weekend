@@ -7,6 +7,8 @@ import TheActivity from '../pages/TheActivity';
 import IndivActivity from '../pages/TheIndivActivity';
 import Users from '../pages/Users';
 import SearchCategory from '../pages/ActivitySearchForCategory';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
  
 Vue.use(VueRouter);
  
@@ -18,10 +20,23 @@ const routes = [
     {
         path:'/users',
         component: Users
+        // meta: {
+        //     requiresAuth: true
+        // }
     },
     {
         path:'/activity',
         component: TheActivity
+    },
+    {
+        path:'/login',
+        component: Login,
+
+    },
+    {
+        path:'/register',
+        component: Register,
+
     },
     {
         path: '/search',

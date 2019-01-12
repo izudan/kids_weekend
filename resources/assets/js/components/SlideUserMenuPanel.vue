@@ -14,7 +14,7 @@
                 <div class="login-icon">
                     <i class="fas fa-sign-in-alt"></i>
                 </div>
-                <a>
+                <a @click.prevent="LoginMobalMobile">
                     <span class="menu-text">ログイン</span>
                 </a>
             </div>
@@ -27,12 +27,6 @@
                 </a>
             </div>
         </div>
-        <!--<login-modal-->
-        <!--    v-if="showLoginModal"-->
-        <!--    :showLoginModal="showLoginModal"-->
-        <!--    :action="handleLogin"-->
-        <!--    @close="loginModalToggle">-->
-        <!--</login-modal>-->
     </section>
 </template>
 
@@ -51,13 +45,10 @@ export default {
         closePanel() {
             this.$emit("closePanel", {});
         },
-        // handleLogin(email, password) {
-        //   this.$router.push('/activity');
-        //   this.login({email: email, password: password});
-        // },
-        // loginModalToggle(){
-        //   this.showLoginModal = !this.showLoginModal;
-        // },
+        async LoginMobalMobile() {
+            await this.closePanel();
+            console.log("ok")
+        }
     }
 }
 </script>

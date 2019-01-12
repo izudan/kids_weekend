@@ -18,18 +18,18 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div v-if="!isLoggedIn" class="buttons">
-              <a class="button btn-expand" @click.prevent="registerUsers">
-                テスト登録
-              </a>              
-              <a class="button btn-expand" @click.prevent="showSearchPanel">
-                <i class="fas fa-search"></i>
-              </a>
-              <a class="button btn-expand btn-register" @click.prevent="registerModalToggle">
+              <router-link to="/register" class="button btn-expand btn-register">
                 <strong class="has-text-white">登録する</strong>
-              </a>
-              <a class="button btn-expand btn-login" @click.prevent="loginModalToggle">
+              </router-link>
+              <!--<a class="button btn-expand btn-register" @click.prevent="registerModalToggle">-->
+              <!--  <strong class="has-text-white">登録する</strong>-->
+              <!--</a>-->
+              <!--<a class="button btn-expand btn-login" @click.prevent="loginModalToggle">-->
+              <!--  <strong class="has-text-white">ログイン</strong>-->
+              <!--</a>-->
+              <router-link to="/login" class="button btn-expand btn-login">
                 <strong class="has-text-white">ログイン</strong>
-              </a>
+              </router-link>
             </div>
             <div v-else class="buttons is-hidden-mobile">
               <div class="dropdown is-right" :class="{ 'is-active': dropdownActive }">
@@ -71,19 +71,19 @@
           </div>
         </div>
         <template>
-          <register-modal
-              v-if="showRegisterModal"
-              :action="handleRegister"
-              :showRegisterModal="showRegisterModal"
-              @close="registerModalToggle">
-          </register-modal>
+          <!--<register-modal-->
+          <!--    v-if="showRegisterModal"-->
+          <!--    :action="handleRegister"-->
+          <!--    :showRegisterModal="showRegisterModal"-->
+          <!--    @close="registerModalToggle">-->
+          <!--</register-modal>-->
             
-          <login-modal
-              v-if="showLoginModal"
-              :showLoginModal="showLoginModal"
-              :action="handleLogin"
-              @close="loginModalToggle">
-          </login-modal>
+          <!--<login-modal-->
+          <!--    v-if="showLoginModal"-->
+          <!--    :showLoginModal="showLoginModal"-->
+          <!--    :action="handleLogin"-->
+          <!--    @close="loginModalToggle">-->
+          <!--</login-modal>-->
             
           <logout-modal
               v-if="showLogoutModal"
@@ -127,8 +127,7 @@ export default {
       showRegisterModal: false,
       showLoginModal: false,
       showLogoutModal: false,
-      showDropDown: false,
-      users: {}
+      showDropDown: false
     };
   },
   computed: {
@@ -143,22 +142,33 @@ export default {
       login: 'user/login',
       logout: 'user/logout',
     }),
-    handleRegister(email, password) {
+    async handleRegister(email, password) {
+      await this.registerModalToggle();
       this.register({email: email, password: password});
     },
-    handleLogin(email, password) {
+    async handleLogin(email, password) {
+      await this.loginModalToggle();
+      await this.login({email: email, password: password});
       this.$router.push('/activity');
-      this.login({email: email, password: password});
     },
-    handleLogout() {
+    async handleLogout() {
+      await this.logoutModalToggle();
       this.logout();
+      this.$router.push('/');
     },
     showUserMenuPanel() {
       const panel = this.$showPanel({
         component: "UserMenu",
         cssClass: "UserMenu",
         openOn: this.userMenu.openOn,
-        width: this.userMenu.maxWidth
+        width: this.userMenu.maxWidth,
+        props: {
+        }
+      });
+      
+      panel.promise.then(result => {
+        this.$router.push('/login');
+        console.log(result)
       });
     },
     userMenuActiveToggle(){

@@ -13,14 +13,6 @@
           <div class="modal-body">
             <slot name="body">
                 <form>
-                    <!--<div class="field">-->
-                    <!--    <div class="control">-->
-                    <!--        <a class="button is-medium is-fullwidth btn-line">LINEでログイン</a>-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--<div class="orField has-text-centered">-->
-                    <!--    <p>------- または -------</p>-->
-                    <!--</div>-->
                     <p class="register-title">メールアドレスで登録</p>
                     <div class="field">
                       <div class="control has-icons-left has-icons-right">
