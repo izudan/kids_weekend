@@ -8,108 +8,40 @@
       <tabs>
         <tab name="予約中" :selected="true">
           <div>
-            <div class="reserve-heading-helper">
-              <h2 class="heading sub">
-                <span>2019年1月29日</span>
-                <span>15:00</span> ~ <span>17:00</span>
-                <span>@</span><span>月島</span>
-              </h2>
-            </div>
-            <div class="columns is-multiline is-mobile">
-              <router-link :to="{ name: 'IndivActivity', params: { id: 1 }}" class="column is-half-desktop">
-                    <div class="image-container">
-                        <div class="image-box">
-                            <figure class="image">
-                              <progressive-img src="/images/education/edu_kids_larning_class.jpeg"/>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="content-container">
-                        <div class="content">
-                            <div class="school-title text-completion-mobile has-text-weight-semibold has-text-primary">
-                                <span class="school-title-detail">みうら</span>
-                            </div>
-                            <div class="activity-title text-completion-mobile has-text-weight-bold">
-                                大乱闘ミウラブラザーズ
-                            </div>
-                            <div class="short-description text-completion is-7">
-                                <span class="icon is-small"><i class="fas fa-child has-text-danger"></i></span>
-                                <span>りえちゃん</span>
-                            </div>
-                        </div>
-                    </div>
-                </router-link>
-            </div>
-          </div>
-          <div>
-            <div class="reserve-heading-helper">
-              <h2 class="heading sub">
-                <span>2019年2月17日</span>
-                <span>15:00</span> ~ <span>17:00</span>
-                <span>@</span><span>表参道</span>
-              </h2>
-            </div>
-            <div class="columns is-multiline is-mobile">
-              <router-link :to="{ name: 'IndivActivity', params: { id: 1 }}" class="column is-half-desktop">
-                    <div class="image-container">
-                        <div class="image-box">
-                            <figure class="image">
-                              <progressive-img src="/images/education/edu_kids_larning_class.jpeg"/>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="content-container">
-                        <div class="content">
-                            <div class="school-title text-completion-mobile has-text-weight-semibold has-text-primary">
-                                <span class="school-title-detail">みうら</span>
-                            </div>
-                            <div class="activity-title text-completion-mobile has-text-weight-bold">
-                                大乱闘ミウラブラザーズ
-                            </div>
-                            <div class="short-description text-completion is-7">
-                                <span class="icon is-small"><i class="fas fa-child has-text-danger"></i></span>
-                                <span>ながせちゃん</span>
-                            </div>
-                        </div>
-                    </div>
-                </router-link>
-            </div>
+            <div class="reserve-contents">
+                <div class="reserve-content-imgage">
+                  <figure class="image">
+                      <progressive-img class="" src="/images/dreaming_boy.jpg" placeholder="https://unsplash.it/1920/1080?random" />
+                  </figure>
+                </div>
+                <div class="reserve-content-main">
+                  <div class="reserve-content">1月20日（土）15:00-17:00</div>
+                  <div class="reserve-content">English School Miura</div>
+                  <div class="reserve-content">東京都中央区月島1-1-1</div>
+                  <div class="reserve-content">
+                    <span class="icon is-small"><i class="fas fa-child has-text-danger"></i></span>
+                    <span>りえちゃん</span>
+                  </div>
+                </div>              
+            </div>            
           </div>
         </tab>
         <tab name="体験後">
-          <div>
-            <div class="reserve-heading-helper">
-              <h2 class="heading sub">
-                <span>2019年1月12日</span>
-                <span>10:00</span> ~ <span>13:00</span>
-                <span>@</span><span>ジーズアカデミー</span>
-              </h2>
-            </div>
-            <div class="columns is-multiline is-mobile">
-              <router-link :to="{ name: 'IndivActivity', params: { id: 1 }}" class="column is-half-desktop">
-                    <div class="image-container">
-                        <div class="image-box">
-                            <figure class="image">
-                              <progressive-img src="/images/art/art_ar_class.jpeg" />
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="content-container">
-                        <div class="content">
-                            <div class="school-title text-completion-mobile has-text-weight-semibold has-text-primary">
-                                <span class="school-title-detail">ジーズアカデミー</span>
-                            </div>
-                            <div class="activity-title text-completion-mobile has-text-weight-bold">
-                                大乱闘コードでブラザーズ
-                            </div>
-                            <div class="short-description text-completion is-7">
-                                <span class="icon is-small"><i class="fas fa-child has-text-danger"></i></span>
-                                <span>ながせちゃん</span>
-                            </div>
-                        </div>
-                    </div>
-                </router-link>
-            </div>
+          <div class="reserve-contents">
+              <div class="reserve-content-imgage">
+                <figure class="image">
+                    <progressive-img class="" src="/images/dreaming_boy.jpg" placeholder="https://unsplash.it/1920/1080?random" />
+                </figure>
+              </div>
+              <div class="reserve-content-main">
+                <div class="reserve-content">1月12日（土）12:00-13:00</div>
+                <div class="reserve-content">The Recruit Nagase</div>
+                <div class="reserve-content">東京都港区元麻布1-1-1</div>
+                <div class="reserve-content">
+                  <span class="icon is-small"><i class="fas fa-child has-text-danger"></i></span>
+                  <span>ながせちゃん</span>
+                </div>
+              </div>              
           </div>
         </tab>
       </tabs>
@@ -131,6 +63,38 @@ export default {
 </script>
 
 <style scoped>
+.reserve-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  height: 100px;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 0px 0px 1px, rgba(0, 0, 0, 0.08) 0px 3px 6px !important;
+  margin-bottom: 16px;
+}
+.reserve-content-imgage {
+  margin-right: 16px;
+  height: 64px;
+  width: 64px;
+  border-radius: 4px;
+}
+.reserve-content-main {
+  height: 64px;
+  width: 100%;
+}
+.reserve-content {
+  height: 16px;
+  width: 100%;
+  font-size: 12px;
+}
+.progressive-image {
+  width: 64px;
+  height: 64px;
+}
+
+
 .loading-container {
     display: flex;
     justify-content: center;

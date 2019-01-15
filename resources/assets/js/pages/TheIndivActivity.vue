@@ -434,7 +434,7 @@ a:hover {
     justify-content: space-between;
     margin-top: 40px;
     padding-bottom: 40px;
-    border-bottom: 1px solid #EBEBEB; 
+    border-bottom: 1px solid #EBEBEB;
 }
 .contact-host {
     font-size: 12px;

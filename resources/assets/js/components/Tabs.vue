@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 .tabs {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 .tab-name {
     padding: 8px 36px;

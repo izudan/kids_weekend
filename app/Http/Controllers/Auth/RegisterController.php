@@ -48,9 +48,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            // 'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            // 'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -63,9 +63,24 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            // 'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    public function pre_check(Request $request){
+        $this->validator($request->all())->validate();
+        //flash data
+        $request->flashOnly( 'email');
+
+        $bridge_request = $request->all();
+        // password マスキング
+        $bridge_request['password_mask'] = '******';
+
+        return view('auth.register_check')->with($bridge_request);
+    }
+    
+    public function register(Request $request) {
+        return $request->email;
     }
 }
