@@ -35,6 +35,4 @@ class Book extends Model
     {
         return $this->belongsTo('App\Event');
     }
-
-    
 }

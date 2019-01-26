@@ -46,8 +46,8 @@ class EventController extends Controller
     
     public function getEvent()
     {
-        $events = Event::all();
-        return $events->activity->school;
+        $events = Event::with(['activity.schools'])->get();
+        return $events;
     }
 
     public function getActivity()

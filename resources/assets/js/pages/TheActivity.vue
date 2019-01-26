@@ -39,7 +39,7 @@
                                         <div class="activity-time text-completion">
                                             <span class="icon is-small"><i class="far fa-clock has-text-primary"></i></span>
                                             <time datetime="2016-1-1">{{ data.event_start_time }}</time>
-                                        </div>                            
+                                        </div>
                                         <div class="short-description text-completion is-7">
                                             <span class="icon is-small"><i class="fas fa-child has-text-danger"></i></span>
                                             <span>{{ data.event_target_min_age }}</span>
